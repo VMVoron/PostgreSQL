@@ -23,6 +23,16 @@ CREATE TYPE gearbox AS ENUM (
     'manual',
     'automatic'
 );
+
+CREATE OR REPLACE FUNCTION get_random_number()
+RETURNS INTEGER AS $$
+BEGIN
+  RETURN FLOOR(RANDOM() * 101);
+END;
+$$ LANGUAGE plpgsql;
+
+SELECT get_random_number();
+
 -- Создание таблицы "error_log" для записи ошибок
 CREATE TABLE IF NOT EXISTS error_log (
     error_id SERIAL PRIMARY KEY,
